@@ -5,6 +5,6 @@ deploy:
   provider: heroku
   api_key:
     secure: pIwAfA4daBUWU/vI2LGnvsVn0BEsq8U060S+z3QaT7PG6KFGgzFA4cOPRagGkMJwqjaDVibjnLnb08J8zr0uRaGjpgm1NSXHdMandTyOIChcl3E0GQGf8eyrhGzU21o9x4xrtM/QuQ7BaZf/It40JNRKTsBq/SmShBaEO1gkRdkLp++nlaVocdxfw8R/o/90e4VQjmjeD1WdxiLsut6jnMS4F23Ze6Iq0UGofr7GxQAq7ILLgKzQkjT6yH3lUtkP/EIFkIY9OA0UEOKkpM8hgcp5GtU9B2URZ6MsgUcnY4KxGISL17ivLO/XS8w+KNfui8LUqcQVXMXjz1v91BZ/c3CqmpS2mZUarGTNqQ3d5zX5XVR/OwqrIeSWRRaxLgP1/hlrVFWo1hA8Yr6ua/JVeR3FNmZ4tEHCrhTndA1imEUj4VorAEUUzaF7Hmd4wMeUd70+vresrDIGTCNUcJpySO2b3X8gQpHasS567Dq61Z1DBvm3q9niscu0+R+wesMZCKx7R68cmv6+4Q0NvGOUf9bruWsW+a5nB3g0QqyBt/JZdn3e8F4TUkk+J1zASK3BHbRJqc72UIZp1o3y0im/ahXzO6yfKRhcaG+gV7eihR0AeqHf3LQW67zXWJJ4tkeua+yk/dEkRuznaYMm9Pz1jxbP2yxjen1n7oZ5Wx6P2sI=
-  app: eTraction
+  app: etraction
   on:
     repo: gracz21/eTraction
