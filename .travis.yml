@@ -24,3 +24,4 @@ deploy:
   app: etraction
   on:
     repo: gracz21/eTraction
+  run: "rake db:migrate"
