@@ -1,6 +1,8 @@
 # eTraction
 
 [![Build Status](https://travis-ci.org/gracz21/eTraction.svg?branch=master)](https://travis-ci.org/gracz21/eTraction)
+[![Code Climate](https://codeclimate.com/github/gracz21/eTraction/badges/gpa.svg)](https://codeclimate.com/github/gracz21/eTraction)
+[![Test Coverage](https://codeclimate.com/github/gracz21/eTraction/badges/coverage.svg)](https://codeclimate.com/github/gracz21/eTraction/coverage)
 
 ## Introduction
 
@@ -8,7 +10,7 @@ This is a repository of Ruby on Rails based backend for eTraction mobile app. eT
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following things properly installed on your computer:
 
 * [Git](http://git-scm.com/)
 * [Ruby](https://www.ruby-lang.org/pl/documentation/installation/) (version >= 2.4)
@@ -38,7 +40,7 @@ Server used in development as well as production is [Puma](https://github.com/pu
 
 ## Further instruction
 
-After each remote repo change follow this steps.
+After each remote repo change follow this steps:
 
 * `git pull`
 * `bundle install`
