@@ -11,6 +11,7 @@ gem 'rails', '~> 5.0.2'
 
 gem 'pg'
 gem 'puma', '~> 3.0'
+gem 'faker'
 
 #may be used
 gem 'sass-rails', '~> 5.0'
