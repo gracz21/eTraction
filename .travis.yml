@@ -1,10 +1,22 @@
+#Ruby environment
 language: ruby
 rvm:
   - 2.4.0
+
+#PostgreSQL environment
 services:
   - postgresql
 before_script:
   - psql -c 'create database etraction_test;' -U postgres
+
+#CodeClimate test coverage
+addons:
+  code_climate:
+    repo_token: <token>
+after_success:
+  - bundle exec codeclimate-test-reporter
+
+#Heroku deploy
 deploy:
   provider: heroku
   api_key:
