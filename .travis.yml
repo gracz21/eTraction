@@ -1,6 +1,10 @@
 language: ruby
 rvm:
-- 2.4.0
+  - 2.4.0
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database etraction_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
