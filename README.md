@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/gracz21/eTraction.svg?branch=master)](https://travis-ci.org/gracz21/eTraction)
 [![Code Climate](https://codeclimate.com/github/gracz21/eTraction/badges/gpa.svg)](https://codeclimate.com/github/gracz21/eTraction)
 [![Test Coverage](https://codeclimate.com/github/gracz21/eTraction/badges/coverage.svg)](https://codeclimate.com/github/gracz21/eTraction/coverage)
+[![security](https://hakiri.io/github/gracz21/eTraction/master.svg)](https://hakiri.io/github/gracz21/eTraction/master)
 
 ## Introduction
 
