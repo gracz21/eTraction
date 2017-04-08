@@ -11,6 +11,8 @@ gem 'rails', '~> 5.0.2'
 
 gem 'pg'
 gem 'puma', '~> 3.0'
+
+gem 'rails_admin', '~> 1.1.1'
 gem 'faker'
 
 #may be used
