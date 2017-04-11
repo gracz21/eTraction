@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '', as: 'rails_admin'
-  mount API::Root => '/api'
+  mount RailsAdmin::Engine => '/administration', as: 'rails_admin'
+  mount API::Base => '/api'
+  mount GrapeSwaggerRails::Engine, at: '/api/doc'
 end
