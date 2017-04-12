@@ -1,5 +1,6 @@
 module API::V1
   class Base < Grape::API
+    default_format :json
     format :json
     version 'v1'
 
