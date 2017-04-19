@@ -16,6 +16,7 @@ gem 'faker'
 gem 'grape', '~> 0.19.1'
 gem 'grape-entity', '~> 0.6.1'
 gem 'grape-swagger', '~> 0.27.0'
+gem 'grape-swagger-entity'
 gem 'grape-swagger-rails'
 gem 'rails_admin', '~> 1.1.1'
 
