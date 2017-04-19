@@ -4,7 +4,8 @@ module API::V1
     format :json
     version 'v1'
 
-    mount API::V1::Statements
+    mount API::V1::Cameras
     mount API::V1::Movies
+    mount API::V1::Statements
   end
 end
