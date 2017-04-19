@@ -12,6 +12,7 @@ gem 'rails', '~> 5.0.2'
 
 gem 'pg'
 gem 'faker'
+gem 'valid_url'
 
 gem 'grape', '~> 0.19.1'
 gem 'grape-entity', '~> 0.6.1'
@@ -38,8 +39,8 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter', '~> 1.0.0'
-  gem 'simplecov'
   gem 'shoulda', '~> 3.5'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
