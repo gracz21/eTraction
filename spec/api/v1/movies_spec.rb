@@ -12,7 +12,7 @@ describe API::V1::Movies, type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns all statements' do
+    it 'returns all movies' do
       expect(response.body).to eq movie_entity.represent(movies).to_json
     end
   end

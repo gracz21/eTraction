@@ -12,7 +12,7 @@ describe API::V1::Cameras, type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns all statements' do
+    it 'returns all cameras' do
       expect(response.body).to eq camera_entity.represent(cameras).to_json
     end
   end
