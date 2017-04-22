@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::V1::Cameras, type: :request do
   let(:camera_entity) { API::Entities::Camera }
 
-  describe 'GET /api/v1/movies' do
+  describe 'GET /api/v1/cameras' do
     let!(:cameras) { FactoryGirl.create_list(:camera, 3) }
 
     before { get '/api/v1/cameras' }

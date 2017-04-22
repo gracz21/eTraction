@@ -16,9 +16,11 @@ gem 'valid_url'
 
 gem 'grape', '~> 0.19.1'
 gem 'grape-entity', '~> 0.6.1'
+gem 'grape-kaminari'
 gem 'grape-swagger', '~> 0.27.0'
 gem 'grape-swagger-entity'
 gem 'grape-swagger-rails'
+gem 'hashie-forbidden_attributes'
 gem 'rails_admin', '~> 1.1.1'
 
 
@@ -42,6 +44,3 @@ group :test do
   gem 'shoulda', '~> 3.5'
   gem 'simplecov'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

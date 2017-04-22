@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::V1::RestaurantMenuItems, type: :request do
   let(:restaurant_menu_item_entity) { API::Entities::RestaurantMenuItem }
 
-  describe 'GET /api/v1/movies' do
+  describe 'GET /api/v1/restaurant_menu_item' do
     let!(:restaurant_menu_items) { FactoryGirl.create_list(:restaurant_menu_item, 3) }
 
     before { get '/api/v1/restaurant_menu_items' }

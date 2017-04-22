@@ -5,6 +5,7 @@ module API::V1
     version 'v1'
 
     mount API::V1::Cameras
+    mount API::V1::Messages
     mount API::V1::Movies
     mount API::V1::RestaurantMenuItems
     mount API::V1::Statements
