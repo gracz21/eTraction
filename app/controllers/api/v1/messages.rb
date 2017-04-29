@@ -4,21 +4,32 @@ module API::V1
 
     resource :messages do
       desc 'Return paginated list of all chat messages connected with current ride',
-           entity: API::Entities::Message
+          entity: API::Entities::Message
       paginate per_page: 20, max_per_page: 30, offset: false
       get do
         present paginate(Kaminari.paginate_array(Message.all)), with: API::Entities::Message
       end
 
-      desc 'Create new message',
-          entity: API::Entities::Message
+      desc 'Create new message', {
+        headers: {
+            'Device-Id' => {
+                description: 'Android device identifier',
+                required: true
+            }
+        },
+        entity: API::Entities::Message
+      }
       params do
         requires :message, type: Hash do
           requires :all, using: API::Entities::Message.documentation.except(:id, :created_at)
         end
       end
       post do
-        message = Message.create(declared(params).message)
+        error!('Unauthorized', 401) if headers['Device-Id'].nil?
+        user = User.find_by(device_id: headers['Device-Id'])
+        error!('Unauthorized', 401) if user.nil?
+
+        message = user.messages.create(declared(params).message)
         error!({errors: message.errors}, 400) unless message.persisted?
         present message, with: API::Entities::Message
       end
