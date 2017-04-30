@@ -11,13 +11,14 @@ module API::V1
       end
 
       desc 'Create new message', {
-        headers: {
-            'Device-Id' => {
-                description: 'Android device identifier',
-                required: true
-            }
-        },
-        entity: API::Entities::Message
+          success: { model: API::Entities::Message },
+          failure: [ { code: 401, message: 'Unauthorized' } ],
+          headers: {
+              'Device-Id' => {
+                  description: 'Android device identifier',
+                  required: true
+              }
+          }
       }
       params do
         requires :message, type: Hash do
