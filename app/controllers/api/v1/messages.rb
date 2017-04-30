@@ -21,7 +21,7 @@ module API::V1
       }
       params do
         requires :message, type: Hash do
-          requires :all, using: API::Entities::Message.documentation.except(:id, :created_at)
+          requires :all, using: API::Entities::Message.documentation.except(:id, :author, :created_at)
         end
       end
       post do

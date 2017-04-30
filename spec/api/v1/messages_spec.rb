@@ -41,7 +41,6 @@ describe API::V1::Messages, type: :request do
         end
       end
 
-
       context 'when device is not registered' do
         before { post '/api/v1/messages', params: message_params, headers: { 'Device-Id' => SecureRandom.uuid } }
 
