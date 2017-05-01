@@ -5,7 +5,7 @@ module API::V1
     end
 
     resource :users do
-      desc 'Return user based on given device identifier', {
+      desc 'Return anonymous user based on given device identifier', {
           success: { model: API::Entities::User },
           failure: [ { code: 401, message: 'Unauthorized' },
                      {code: 404, message: 'User not found'} ],
@@ -22,9 +22,10 @@ module API::V1
         present User.find_by!(device_id: headers['Device-Id']), with: API::Entities::User
       end
 
-      desc 'Create new user or return user if already created', {
+      desc 'Create new anonymous user', {
           success: { model: API::Entities::User },
-          failure: [ { code: 401, message: 'Unauthorized' } ],
+          failure: [ {code: 400, message: 'Wrong request parameters'},
+                     { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
                   description: 'Android device identifier',
@@ -40,9 +41,7 @@ module API::V1
       post do
         error!('Unauthorized', 401) if headers['Device-Id'].nil?
 
-        user = User.find_or_initialize_by(device_id: headers['Device-Id'])
-        user.username = params[:user][:username]
-        user.save
+        user = User.create(username: declared(params).user[:username], device_id: headers['Device-Id'])
         error!({errors: user.errors}, 400) unless user.persisted?
         present user, with: API::Entities::User
       end
