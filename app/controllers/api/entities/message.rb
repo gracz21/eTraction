@@ -8,6 +8,7 @@ module API::Entities
     expose :created_at, documentation: { type: DateTime, desc: 'Message creation time', presence: true }
 
     private
+
     def author
       object.user.username
     end
