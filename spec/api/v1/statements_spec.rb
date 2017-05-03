@@ -8,11 +8,9 @@ describe API::V1::Statements, type: :request do
 
     before { get '/api/v1/statements' }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
-    end
+    it { expect(response).to have_http_status(200) }
 
-    it 'returns all statements' do
+    it 'should return all statements' do
       expect(response.body).to eq statement_entity.represent(statements).to_json
     end
   end

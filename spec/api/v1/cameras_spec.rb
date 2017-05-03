@@ -8,11 +8,9 @@ describe API::V1::Cameras, type: :request do
 
     before { get '/api/v1/cameras' }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
-    end
+    it { expect(response).to have_http_status(200) }
 
-    it 'returns all cameras' do
+    it 'should return all cameras' do
       expect(response.body).to eq camera_entity.represent(cameras).to_json
     end
   end

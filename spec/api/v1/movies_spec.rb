@@ -8,9 +8,7 @@ describe API::V1::Movies, type: :request do
 
     before { get '/api/v1/movies' }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
-    end
+    it { expect(response).to have_http_status(200) }
 
     it 'returns all movies' do
       expect(response.body).to eq movie_entity.represent(movies).to_json

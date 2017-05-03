@@ -8,11 +8,9 @@ describe API::V1::RestaurantMenuItems, type: :request do
 
     before { get '/api/v1/restaurant_menu_items' }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
-    end
+    it { expect(response).to have_http_status(200) }
 
-    it 'returns all restaurant menu items' do
+    it 'should return all restaurant menu items' do
       expect(response.body).to eq restaurant_menu_item_entity.represent(restaurant_menu_items).to_json
     end
   end

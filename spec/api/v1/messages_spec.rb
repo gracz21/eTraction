@@ -11,7 +11,7 @@ describe API::V1::Messages, type: :request do
 
     it { expect(response).to have_http_status(200) }
 
-    it 'returns all messages' do
+    it 'should return all messages' do
       expect(response.body).to eq message_entity.represent(messages).to_json
     end
   end
@@ -19,10 +19,14 @@ describe API::V1::Messages, type: :request do
   describe 'POST /api/v1/messages' do
     let!(:message_params) { { message: FactoryGirl.attributes_for(:message) } }
 
-    context 'with device identifier included in request headers' do
+    context 'when device identifier is included in request headers' do
+      let(:headers) { { 'Device-Id' => device_id } }
+
       context 'when device is already registered' do
-        context 'with valid params' do
-          before { post '/api/v1/messages', params: message_params, headers: { 'Device-Id' => user.device_id } }
+        let!(:device_id) { user.device_id }
+
+        context 'when params are valid' do
+          before { post '/api/v1/messages', params: message_params, headers: headers }
 
           it { expect(response).to have_http_status(201) }
 
@@ -32,23 +36,25 @@ describe API::V1::Messages, type: :request do
           end
         end
 
-        context 'with invalid params' do
+        context 'when params are invalid' do
           let!(:wrong_message_params) { { message: { text: Faker::Lorem.characters(141) } } }
 
-          before { post '/api/v1/messages', params: wrong_message_params, headers: { 'Device-Id' => user.device_id } }
+          before { post '/api/v1/messages', params: wrong_message_params, headers: headers }
 
           it { expect(response).to have_http_status(400) }
         end
       end
 
       context 'when device is not registered' do
-        before { post '/api/v1/messages', params: message_params, headers: { 'Device-Id' => SecureRandom.uuid } }
+        let!(:device_id) { SecureRandom.uuid }
+
+        before { post '/api/v1/messages', params: message_params, headers: headers }
 
         it { expect(response).to have_http_status(401) }
       end
     end
 
-    context 'without device identifier in request headers' do
+    context 'when device identifier is not included in request headers' do
       before { post '/api/v1/messages', params: message_params }
 
       it { expect(response).to have_http_status(401) }
