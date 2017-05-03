@@ -43,6 +43,12 @@ describe API::V1::Messages, type: :request do
 
           it { expect(response).to have_http_status(400) }
         end
+
+        context 'when params are missing' do
+          before { post '/api/v1/messages', headers: headers }
+
+          it { expect(response).to have_http_status(400) }
+        end
       end
 
       context 'when device is not registered' do

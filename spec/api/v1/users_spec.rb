@@ -63,6 +63,12 @@ describe API::V1::Users, type: :request do
 
           it { expect(response).to have_http_status(400) }
         end
+
+        context 'when params are missing' do
+          before { post '/api/v1/users', headers: headers }
+
+          it { expect(response).to have_http_status(400) }
+        end
       end
 
       context 'when device with given id is already registered' do
@@ -108,6 +114,12 @@ describe API::V1::Users, type: :request do
           let!(:wrong_user_params) { { user: { username: other_user.username } } }
 
           before { put '/api/v1/users', params: wrong_user_params, headers: headers }
+
+          it { expect(response).to have_http_status(400) }
+        end
+
+        context 'when params are missing' do
+          before { put '/api/v1/users', headers: headers }
 
           it { expect(response).to have_http_status(400) }
         end
