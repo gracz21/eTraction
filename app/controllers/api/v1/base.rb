@@ -9,6 +9,7 @@ module API::V1
     mount API::V1::Movies
     mount API::V1::RestaurantMenuItems
     mount API::V1::Statements
+    mount API::V1::Tracks
     mount API::V1::Users
   end
 end
