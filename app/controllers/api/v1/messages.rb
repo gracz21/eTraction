@@ -12,7 +12,8 @@ module API::V1
 
       desc 'Create new message', {
           success: { model: API::Entities::Message },
-          failure: [ { code: 401, message: 'Unauthorized' } ],
+          failure: [ {code: 400, message: 'Missing/invalid request parameters'},
+                     { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
                   description: 'Android device identifier',

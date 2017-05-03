@@ -24,7 +24,7 @@ module API::V1
 
       desc 'Create new anonymous user', {
           success: { model: API::Entities::User },
-          failure: [ { code: 400, message: 'Wrong request parameters' },
+          failure: [ { code: 400, message: 'Missing/invalid request parameters' },
                      { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
@@ -48,7 +48,7 @@ module API::V1
 
       desc 'Update user', {
           success: { model: API::Entities::User },
-          failure: [ { code: 400, message: 'Wrong request parameters' },
+          failure: [ { code: 400, message: 'Missing/invalid request parameters' },
                      { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
