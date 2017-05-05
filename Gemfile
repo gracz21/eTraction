@@ -9,6 +9,7 @@ ruby '2.4.0'
 
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
+gem 'redis'
 
 gem 'pg'
 gem 'faker'
