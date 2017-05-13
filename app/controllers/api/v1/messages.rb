@@ -33,7 +33,11 @@ module API::V1
 
         message = user.messages.create(declared(params).message)
         error!({errors: message.errors}, 400) unless message.persisted?
-        present message, with: API::Entities::Message
+        created_message_response = present message, with: API::Entities::Message
+
+        ActionCable.server.broadcast 'chat_room_channel',
+                                     created_message_response
+        created_message_response
       end
     end
   end
