@@ -52,5 +52,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_cable.allowed_request_origins = ['chrome-extension://pfdhoblngboilpfeibdedpjgfnlcodoo']
+  config.action_cable.disable_request_forgery_protection = true
 end
