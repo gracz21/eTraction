@@ -3,7 +3,7 @@ module API
     class TrackItem < Grape::Entity
       root :track_items, :track_item
 
-      expose :sequence_number,
+      expose :position,
              documentation: { type: Integer, desc: 'Stop sequence number in track', presence: true }
       expose :stop_name,
              documentation: { type: String, desc: 'Stop name', presence: true }

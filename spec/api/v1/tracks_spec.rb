@@ -8,9 +8,12 @@ describe API::V1::Track, type: :request do
       stops = FactoryGirl.create_list(:stop, 3)
       track_items = []
       stops.each_with_index do |stop, i|
-        track_items << FactoryGirl.create(:track_item, sequence_number: i+1, stop: stop)
+        track_items << FactoryGirl.create(:track_item, position: i + 1, stop: stop)
       end
-      track = FactoryGirl.create(:track, track_items: track_items)
+      track = nil
+      TrackItem.acts_as_list_no_update do
+        track = FactoryGirl.create(:track, track_items: track_items)
+      end
       track
     end
 

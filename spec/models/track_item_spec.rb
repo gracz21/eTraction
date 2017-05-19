@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe TrackItem, type: :model do
-  context '#sequence_number' do
-    it { should validate_presence_of(:sequence_number) }
-    it { should validate_uniqueness_of(:sequence_number).scoped_to(:track_id) }
-  end
-
   context '#travel_time' do
     it { should validate_presence_of(:travel_time) }
   end
