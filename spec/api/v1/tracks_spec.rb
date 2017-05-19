@@ -6,10 +6,11 @@ describe API::V1::Track, type: :request do
   describe 'GET /api/v1/tracks' do
     let!(:track) do
       stops = FactoryGirl.create_list(:stop, 3)
-      track = FactoryGirl.create(:track)
+      track_items = []
       stops.each_with_index do |stop, i|
-        FactoryGirl.create(:track_item, sequence_number: i+1, stop: stop, track: track)
+        track_items << FactoryGirl.create(:track_item, sequence_number: i+1, stop: stop)
       end
+      track = FactoryGirl.create(:track, track_items: track_items)
       track
     end
 
