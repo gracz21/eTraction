@@ -1,3 +1,6 @@
+require 'i18n'
+I18n.default_locale = :en
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -24,14 +27,24 @@ RailsAdmin.config do |config|
   # config.show_gravatar true
 
   config.actions do
+    excluded_models = ['Message', 'User']
+
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      except excluded_models
+    end
     export
-    bulk_delete
+    bulk_delete do
+      except excluded_models
+    end
     show
-    edit
-    delete
+    edit do
+      except excluded_models
+    end
+    delete do
+      except excluded_models
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
