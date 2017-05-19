@@ -35,8 +35,7 @@ module API::V1
         error!({errors: message.errors}, 400) unless message.persisted?
         created_message_response = present message, with: API::Entities::Message
 
-        ActionCable.server.broadcast 'chat_room_channel',
-                                     created_message_response
+        ActionCable.server.broadcast 'chat_room_channel', created_message_response
         created_message_response
       end
     end
