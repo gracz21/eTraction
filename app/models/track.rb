@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  has_many :track_items, inverse_of: :track
+  has_many :track_items, -> { order(:position) }, inverse_of: :track
   has_many :stops, through: :track_items
 
   validates :name, :track_items, presence: true

@@ -7,11 +7,12 @@ end
 
 ruby '2.4.0'
 
+gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
 gem 'redis'
 
-gem 'pg'
+gem 'acts_as_list'
 gem 'faker'
 gem 'valid_url'
 

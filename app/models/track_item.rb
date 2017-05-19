@@ -1,14 +1,18 @@
 class TrackItem < ApplicationRecord
-  default_scope { order(:track_id, :sequence_number) }
+  default_scope { order(:track_id, :position) }
 
   belongs_to :stop
   belongs_to :track, inverse_of: :track_items
+  acts_as_list scope: :track
 
-  validates :sequence_number, :travel_time, :stop, presence: true
-  validates :sequence_number, uniqueness: { scope: :track_id }
+  validates :travel_time, :stop, presence: true
+  validates :track_id, :uniqueness => { :scope => :stop_id }
 
   rails_admin do
     visible false
+    edit do
+      exclude_fields :position
+    end
   end
 
   def name
