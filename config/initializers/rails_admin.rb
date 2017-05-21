@@ -27,7 +27,7 @@ RailsAdmin.config do |config|
   # config.show_gravatar true
 
   config.actions do
-    excluded_models = ['Message', 'User']
+    excluded_models = ['User']
 
     dashboard                     # mandatory
     index                         # mandatory
