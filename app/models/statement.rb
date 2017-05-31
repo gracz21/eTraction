@@ -7,7 +7,6 @@ class Statement < ApplicationRecord
 
   def send_notifications
     ActionCable.server.broadcast 'statement_notification_channel',
-                                 id: id,
-                                 title: title
+                                 API::Entities::Statement.represent(itself)
   end
 end
