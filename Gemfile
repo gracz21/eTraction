@@ -22,6 +22,7 @@ gem 'grape-kaminari'
 gem 'grape-swagger', '~> 0.27.0'
 gem 'grape-swagger-entity'
 gem 'grape-swagger-rails'
+gem 'geocoder'
 gem 'hashie-forbidden_attributes'
 gem 'rails_admin', '~> 1.1.1'
 

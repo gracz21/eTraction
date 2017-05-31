@@ -91,6 +91,7 @@ GEM
     ffi (1.9.18)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
+    geocoder (1.4.4)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     grape (0.19.1)
@@ -283,6 +284,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   factory_girl_rails
   faker
+  geocoder
   grape (~> 0.19.1)
   grape-entity (~> 0.6.1)
   grape-kaminari
