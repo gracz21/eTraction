@@ -27,7 +27,6 @@ gem 'hashie-forbidden_attributes'
 gem 'rails_admin', '~> 1.1.1'
 
 
-#may be used
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
@@ -39,7 +38,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'listen', '~> 3.0.5'
   gem 'pry'
-  gem 'rspec-rails', github: 'rspec/rspec-rails'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :test do
