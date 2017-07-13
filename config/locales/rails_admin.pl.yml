@@ -35,13 +35,14 @@ pl:
       username: "Użytkownik"
       changes: "Zmiany"
       created_at: "Data/Czas"
+      last_created: "Ostatnio utworzony"
       item: "Pozycja"
       message: "Wiadomość"
     actions:
       dashboard:
         title: "Strona administracyjna"
-        menu: "Kokpit"
-        breadcrumb: "Kokpit"
+        menu: "Strona główna"
+        breadcrumb: "Strona główna"
       index:
         title: "Wyświetl %{model_label_plural}"
         menu: "Wyświetl"
