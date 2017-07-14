@@ -11,8 +11,10 @@ module API
              documentation: { type: Float, desc: 'Stop latitude', presence: true }
       expose :stop_lon, as: :lon,
              documentation: { type: Float, desc: 'Stop longitude', presence: true }
-      expose :travel_time,
-             documentation: { type: Integer, desc: 'Time needed to travel to this stop (in minutes)', presence: true }
+      expose :arrival_time,
+             documentation: { type: DateTime, desc: 'Time of arrival to this stop', presence: true }
+      expose :departure_time,
+             documentation: { type: Integer, desc: 'Time of departure from this stop', presence: true }
 
       private
 
@@ -26,6 +28,16 @@ module API
 
       def stop_lon
         object.stop.longitude
+      end
+
+      def arrival_time
+        Ride.last.created_at.beginning_of_minute +
+            (object.travel_time + object.higher_items.pluck(:travel_time, :down_time).flatten.sum).minutes
+      end
+
+      def departure_time
+        Ride.last.created_at.beginning_of_minute + (object.travel_time + object.down_time +
+            object.higher_items.pluck(:travel_time, :down_time).flatten.sum).minutes
       end
     end
   end

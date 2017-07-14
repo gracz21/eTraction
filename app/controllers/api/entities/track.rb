@@ -13,7 +13,7 @@ module API
       private
 
       def total_travel_time
-        object.track_items.pluck(:travel_time).sum
+        object.track_items.pluck(:travel_time, :down_time).flatten.sum
       end
     end
   end
