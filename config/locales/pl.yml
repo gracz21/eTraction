@@ -231,6 +231,7 @@ pl:
         one: ma nieprawidłową długość (powinna wynosić jeden znak)
         other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
       other_than: musi być inna niż %{count}
+      content_type_whitelist_error: ma nieprawidłowy format
     template:
       body: 'Błędy dotyczą następujących pól:'
       header:
