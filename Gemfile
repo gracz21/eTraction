@@ -16,6 +16,7 @@ gem 'acts_as_list'
 gem 'faker'
 gem 'valid_url'
 
+gem 'carrierwave', '~> 1.0'
 gem 'grape', '~> 0.19.1'
 gem 'grape-entity', '~> 0.6.1'
 gem 'grape-kaminari'

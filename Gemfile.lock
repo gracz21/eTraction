@@ -48,6 +48,10 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.3)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
@@ -273,6 +277,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  carrierwave (~> 1.0)
   codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.2)
   factory_girl_rails
