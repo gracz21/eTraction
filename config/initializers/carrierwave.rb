@@ -5,6 +5,10 @@ if Rails.env.test?
     config.enable_processing = false
   end
 
+  MovieFileUploader
+  MoviePosterUploader
+  RestaurantMenuItemImageUploader
+
   CarrierWave::Uploader::Base.descendants.each do |klass|
     next if klass.anonymous?
     klass.class_eval do
