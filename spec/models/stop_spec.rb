@@ -6,6 +6,10 @@ RSpec.describe Stop, type: :model do
     it { should validate_uniqueness_of(:name).case_insensitive }
   end
 
+  context '#address' do
+    it { should validate_presence_of(:address) }
+  end
+
   context '#track_items' do
     it { should have_many(:track_items) }
   end
