@@ -5,6 +5,10 @@ RSpec.describe TrackItem, type: :model do
     it { should validate_presence_of(:travel_time) }
   end
 
+  context '#down_time' do
+    it { should validate_presence_of(:down_time) }
+  end
+
   context '#stop' do
     it { should belong_to(:stop) }
     it { should validate_presence_of(:stop) }

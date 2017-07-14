@@ -5,7 +5,7 @@ class TrackItem < ApplicationRecord
   belongs_to :track, inverse_of: :track_items
   acts_as_list scope: :track
 
-  validates :travel_time, :stop, presence: true
+  validates :travel_time, :down_time, :stop, presence: true
   validates :track_id, :uniqueness => { :scope => :stop_id }
 
   rails_admin do
