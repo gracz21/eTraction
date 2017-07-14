@@ -16,7 +16,5 @@ RSpec.describe RestaurantMenuItem, type: :model do
 
   context '#image' do
     it { should validate_presence_of(:image) }
-    it { should allow_value('http://foo.com').for(:image) }
-    it { should_not allow_value('http://foo com').for(:image) }
   end
 end

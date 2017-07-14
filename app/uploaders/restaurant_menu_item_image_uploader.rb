@@ -47,7 +47,7 @@ class RestaurantMenuItemImageUploader < CarrierWave::Uploader::Base
   # end
 
   def content_type_whitelist
-    /video\//
+    /image\//
   end
 
 end

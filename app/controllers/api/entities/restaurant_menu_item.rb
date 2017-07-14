@@ -7,5 +7,11 @@ module API::Entities
     expose :price, documentation: { type: Float, desc: 'Restaurant menu item price', presence: true  }
     expose :image, documentation: { type: String, desc: 'Restaurant menu item image', presence: true }
     expose :weight, documentation: { type: Float, desc: 'Restaurant menu item weight', presence: true }
+
+    private
+
+    def image
+      object.image.url
+    end
   end
 end

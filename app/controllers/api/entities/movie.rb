@@ -8,5 +8,15 @@ module API::Entities
     expose :length, documentation: { type: Integer, desc: 'Movie length (in minutes)', presence: true  }
     expose :poster, documentation: { type: String, desc: 'Movie poster', presence: true  }
     expose :filename, documentation: { type: String, desc: 'Movie filename', presence: true  }
+
+    private
+
+    def poster
+      object.poster.url
+    end
+
+    def filename
+      object.filename.url
+    end
   end
 end
