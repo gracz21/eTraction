@@ -21,3 +21,6 @@
 
 #CodeClimate test coverage
 /coverage/*
+
+#File uploads
+public/uploads/*
