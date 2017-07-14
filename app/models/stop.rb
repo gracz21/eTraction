@@ -6,14 +6,15 @@ class Stop < ApplicationRecord
   validates :address, presence: true
 
   geocoded_by :address
-  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? and
+      (obj.latitude.nil? or obj.longitude.nil?) }
 
   rails_admin do
     list do
       exclude_fields :track_items, :tracks
     end
     edit do
-      exclude_fields :track_items, :tracks, :latitude, :longitude
+      exclude_fields :track_items, :tracks
     end
   end
 end
