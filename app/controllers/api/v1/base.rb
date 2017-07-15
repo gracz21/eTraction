@@ -11,5 +11,6 @@ module API::V1
     mount API::V1::Statements
     mount API::V1::Tracks
     mount API::V1::Users
+    mount API::V1::UserVideos
   end
 end
