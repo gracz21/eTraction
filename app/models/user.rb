@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :messages
+  has_many :user_videos
 
   validates :device_id, :username, presence: true, uniqueness: true
 
