@@ -2,74 +2,89 @@
 pl:
   activerecord:
     models:
-      camera: Kamery
-      message: Wiadomości czatu
-      movie: Filmy
-      restaurant_menu_item: Pozycje menu restauracji
-      ride: Przejazdy
-      statement: Komunikaty
-      stop: Przystanki
-      track: Trasy
-      user: Profile anonimowe
+      camera: kamery
+      message: wiadomości czatu
+      movie: filmy
+      restaurant_menu_item: pozycje menu restauracji
+      ride: przejazdy
+      statement: komunikaty
+      stop: przystanki
+      track: trasy
+      track_item: pozycje trasy
+      user: profile anonimowe
+      user_video: filmiki użytkowników
     attributes:
       camera:
-        name: Nazwa
+        name: nazwa
         url: URL
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
+        created_at: utworzono
+        updated_at: zaktualizowano
       message:
-        text: Treść
-        user: Autor
+        text: treść
+        user: autor
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
+        created_at: utworzono
+        updated_at: zaktualizowano
       movie:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        title: Tytuł
-        genre: Gatunek
-        length: Długość
-        poster: Plakat
-        filename: Nazwa pliku
+        created_at: utworzono
+        updated_at: zaktualizowano
+        title: tytuł
+        genre: gatunek
+        length: długość
+        poster: plakat
+        filename: plik filmu
       restaurant_menu_item:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        name: Nazwa
-        price: Cena
-        image: Zdjęcie
-        weight: Waga
+        created_at: utworzono
+        updated_at: zaktualizowano
+        name: nazwa
+        price: cena
+        image: zdjęcie
+        weight: waga
       ride:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        track: Trasa
+        created_at: utworzono
+        updated_at: zaktualizowano
+        track: trasa
       statement:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        title: Tytuł
-        text: Treść
+        created_at: utworzono
+        updated_at: zaktualizowano
+        title: tytuł
+        text: treść
       stop:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        name: Nazwa
-        latitude: Szer. geogr.
-        longitude: Dłg. geogr.
+        created_at: utworzono
+        updated_at: zaktualizowano
+        name: nazwa
+        latitude: szer. geogr.
+        longitude: dłg. geogr.
       track:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        name: Nazwa
+        created_at: utworzono
+        updated_at: zaktualizowano
+        name: nazwa
+        track_items: pozycje trasy
+      track_item:
+        stop: przystanek
+        travel_time: czas podrżóy do kolejnego przystanku
+        down_time: czas postoju na przystanku
       user:
         id: ID
-        created_at: Utworzono
-        updated_at: Zaktualizowano
-        username: Nazwa użytkownika
+        created_at: utworzono
+        updated_at: zaktualizowano
+        username: nazwa użytkownika
         device_id: ID urządzenia
+      user_video:
+        id: ID
+        created_at: utworzono
+        updated_at: zaktualizowano
+        title: tytuł
+        user: autor
+        ride: przejazd
+        video: filmik
     errors:
       messages:
         record_invalid: 'Negatywne sprawdzenie poprawności: %{errors}'

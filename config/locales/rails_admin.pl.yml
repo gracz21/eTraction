@@ -92,6 +92,7 @@ pl:
         menu: "Historia"
         breadcrumb: "Historia"
     form:
+      new_model: "Nowy element"
       cancel: "Anuluj"
       basic_info: "Podstawowe informacje"
       required: "Wymagane"
