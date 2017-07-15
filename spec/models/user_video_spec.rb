@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserVideo, type: :model do
   context '#ride' do
-    it { should belong_to(:user) }
-    it { should validate_presence_of(:user) }
+    it { should belong_to(:ride) }
   end
 
   context '#title' do
