@@ -7,7 +7,7 @@ class Stop < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? and
-      (obj.latitude.nil? or obj.longitude.nil?) }
+      !(obj.latitude_changed? or obj.longitude_changed?) }
 
   rails_admin do
     list do
