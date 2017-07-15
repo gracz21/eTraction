@@ -81,7 +81,44 @@ describe API::V1::UserVideos, type: :request do
     end
   end
 
-  describe 'DELETE /api/v1/user_videos' do
+  describe 'DELETE /api/v1/user_videos/:id' do
+    let!(:user_video) { FactoryGirl.create(:user_video, user: user) }
 
+    context 'when device identifier is included in request headers' do
+      let(:headers) { { 'Device-Id' => device_id } }
+
+      context 'when device is already registered' do
+        context 'when user is an author of the video' do
+          let!(:device_id) { user.device_id }
+
+          before { delete "/api/v1/user_videos/#{user_video.id}", headers: headers }
+
+          it { expect(response).to have_http_status(200) }
+        end
+
+        context 'when user is not an author of the video' do
+          let!(:other_user) { FactoryGirl.create(:user) }
+          let!(:device_id) { other_user.device_id }
+
+          before { delete "/api/v1/user_videos/#{user_video.id}", headers: headers }
+
+          it { expect(response).to have_http_status(403) }
+        end
+      end
+
+      context 'when device is not registered' do
+        let!(:device_id) { SecureRandom.uuid }
+
+        before { delete "/api/v1/user_videos/#{user_video.id}", headers: headers }
+
+        it { expect(response).to have_http_status(401) }
+      end
+    end
+
+    context 'when device identifier is not included in request headers' do
+      before { delete "/api/v1/user_videos/#{user_video.id}" }
+
+      it { expect(response).to have_http_status(401) }
+    end
   end
 end
