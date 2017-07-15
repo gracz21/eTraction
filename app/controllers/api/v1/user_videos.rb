@@ -9,6 +9,33 @@ module API::V1
       get do
         present paginate(Kaminari.paginate_array(Ride.last.user_videos)), with: API::Entities::UserVideo
       end
+
+      desc 'Create new user video', {
+          success: { model: API::Entities::UserVideo },
+          failure: [ {code: 400, message: 'Missing/invalid request parameters'},
+                     { code: 401, message: 'Unauthorized' } ],
+          headers: {
+              'Device-Id' => {
+                  description: 'Android device identifier',
+                  required: true
+              }
+          }
+      }
+      params do
+        requires :user_video, type: Hash do
+          requires :title, type: String, desc: 'Video title'
+          requires :video, type: File, desc: 'Video file'
+        end
+      end
+      post do
+        error!('Unauthorized', 401) if headers['Device-Id'].nil?
+        user = User.find_by(device_id: headers['Device-Id'])
+        error!('Unauthorized', 401) if user.nil?
+
+        user_video = user.user_videos.create(declared(params).user_video)
+        error!({errors: user_video.errors}, 400) unless user_video.persisted?
+        present user_video, with: API::Entities::UserVideo
+      end
     end
   end
 end

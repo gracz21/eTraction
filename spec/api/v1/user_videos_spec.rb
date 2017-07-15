@@ -28,4 +28,60 @@ describe API::V1::UserVideos, type: :request do
       expect(response.body).to eq user_video_entity.represent(user_videos).to_json
     end
   end
+
+  describe 'POST /api/v1/user_videos' do
+    let!(:user_video_params) { { user_video: FactoryGirl.attributes_for(:user_video) } }
+
+    context 'when device identifier is included in request headers' do
+      let(:headers) { { 'Device-Id' => device_id } }
+
+      context 'when device is already registered' do
+        let!(:device_id) { user.device_id }
+
+        context 'when params are valid' do
+          before { post '/api/v1/user_videos', params: user_video_params, headers: headers }
+
+          it { expect(response).to have_http_status(201) }
+
+          it 'returns created message' do
+            created_user_video = UserVideo.order(created_at: :desc).first
+            expect(response.body).to eq user_video_entity.represent(created_user_video).to_json
+          end
+        end
+
+        context 'when params are invalid' do
+          let!(:wrong_user_video_params) {
+            { user_video:FactoryGirl.attributes_for(:user_video, title: Faker::Lorem.characters(51)) } }
+
+          before { post '/api/v1/user_videos', params: wrong_user_video_params, headers: headers }
+
+          it { expect(response).to have_http_status(400) }
+        end
+
+        context 'when params are missing' do
+          before { post '/api/v1/user_videos', headers: headers }
+
+          it { expect(response).to have_http_status(400) }
+        end
+      end
+
+      context 'when device is not registered' do
+        let!(:device_id) { SecureRandom.uuid }
+
+        before { post '/api/v1/user_videos', params: user_video_params, headers: headers }
+
+        it { expect(response).to have_http_status(401) }
+      end
+    end
+
+    context 'when device identifier is not included in request headers' do
+      before { post '/api/v1/user_videos', params: user_video_params }
+
+      it { expect(response).to have_http_status(401) }
+    end
+  end
+
+  describe 'DELETE /api/v1/user_videos' do
+
+  end
 end
