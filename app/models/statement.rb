@@ -1,10 +1,12 @@
 class Statement < ApplicationRecord
+  default_scope { order(updated_at: :desc) }
+
   belongs_to :ride
 
   validates :title, :text, presence: true
 
   before_create :assign_ride
-  after_create :send_notifications
+  after_save :send_notifications
 
   rails_admin do
     edit do

@@ -11,7 +11,8 @@ describe API::V1::Statements, type: :request do
     it { expect(response).to have_http_status(200) }
 
     it 'should return all statements' do
-      expect(response.body).to eq statement_entity.represent(statements).to_json
+      expect(response.body).to eq statement_entity.
+          represent(statements.sort { |a, b| b.updated_at <=> a.updated_at }).to_json
     end
   end
 end
