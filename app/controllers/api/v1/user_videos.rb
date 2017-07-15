@@ -12,7 +12,7 @@ module API::V1
 
       desc 'Return paginated list of all user videos of given user connected with current ride', {
           success: { model: API::Entities::UserVideo },
-          failure: { code: 401, message: 'Unauthorized' },
+          failure: [ { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
                   description: 'Android device identifier',
@@ -30,7 +30,6 @@ module API::V1
         present paginate(Kaminari.paginate_array(user.user_videos.where(ride_id: ride_id))),
                 with: API::Entities::UserVideo
       end
-
 
       desc 'Create new user video', {
           success: { model: API::Entities::UserVideo },
