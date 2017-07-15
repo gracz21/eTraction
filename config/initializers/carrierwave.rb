@@ -8,6 +8,7 @@ if Rails.env.test?
   MovieFileUploader
   MoviePosterUploader
   RestaurantMenuItemImageUploader
+  UserVideoUploader
 
   CarrierWave::Uploader::Base.descendants.each do |klass|
     next if klass.anonymous?
