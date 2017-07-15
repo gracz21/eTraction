@@ -7,6 +7,12 @@ class Message < ApplicationRecord
 
   before_create :assign_ride
 
+  rails_admin do
+    edit do
+      exclude_fields :ride
+    end
+  end
+
   private
 
   def assign_ride

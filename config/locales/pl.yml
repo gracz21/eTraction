@@ -23,6 +23,7 @@ pl:
       message:
         text: treść
         user: autor
+        ride: przejazd
         id: ID
         created_at: utworzono
         updated_at: zaktualizowano
@@ -54,6 +55,7 @@ pl:
         updated_at: zaktualizowano
         title: tytuł
         text: treść
+        ride: przejazd
       stop:
         id: ID
         created_at: utworzono
