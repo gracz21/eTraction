@@ -24,8 +24,44 @@ describe API::V1::UserVideos, type: :request do
 
     it { expect(response).to have_http_status(200) }
 
-    it 'returns all movies' do
+    it 'returns all user videos connected to current ride' do
       expect(response.body).to eq user_video_entity.represent(user_videos).to_json
+    end
+  end
+
+  describe 'GET /api/v1/user_videos/my_videos' do
+    let!(:other_user) { FactoryGirl.create(:user) }
+    let!(:user_videos) { FactoryGirl.create_list(:user_video, 3, user: user) }
+    let!(:other_user_videos) { FactoryGirl.create_list(:user_video, 3, user: other_user) }
+
+    context 'when device identifier is included in request headers' do
+      let(:headers) { { 'Device-Id' => device_id } }
+
+      context 'when device is already registered' do
+        let!(:device_id) { user.device_id }
+
+        before { get '/api/v1/user_videos/my_videos', headers: headers }
+
+        it { expect(response).to have_http_status(200) }
+
+        it 'returns all user videos of given user connected to current ride' do
+          expect(response.body).to eq user_video_entity.represent(user_videos).to_json
+        end
+      end
+
+      context 'when device is not registered' do
+        let!(:device_id) { SecureRandom.uuid }
+
+        before { get '/api/v1/user_videos/my_videos', headers: headers }
+
+        it { expect(response).to have_http_status(401) }
+      end
+    end
+
+    context 'when device identifier is not included in request headers' do
+      before { get '/api/v1/user_videos/my_videos' }
+
+      it { expect(response).to have_http_status(401) }
     end
   end
 

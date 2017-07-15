@@ -10,9 +10,31 @@ module API::V1
         present paginate(Kaminari.paginate_array(Ride.last.user_videos)), with: API::Entities::UserVideo
       end
 
+      desc 'Return paginated list of all user videos of given user connected with current ride', {
+          success: { model: API::Entities::UserVideo },
+          failure: { code: 401, message: 'Unauthorized' },
+          headers: {
+              'Device-Id' => {
+                  description: 'Android device identifier',
+                  required: true
+              }
+          }
+      }
+      paginate per_page: 20, max_per_page: 30, offset: false
+      get :my_videos do
+        error!('Unauthorized', 401) if headers['Device-Id'].nil?
+        user = User.find_by(device_id: headers['Device-Id'])
+        error!('Unauthorized', 401) if user.nil?
+
+        ride_id = Ride.last.id
+        present paginate(Kaminari.paginate_array(user.user_videos.where(ride_id: ride_id))),
+                with: API::Entities::UserVideo
+      end
+
+
       desc 'Create new user video', {
           success: { model: API::Entities::UserVideo },
-          failure: [ {code: 400, message: 'Missing/invalid request parameters'},
+          failure: [ { code: 400, message: 'Missing/invalid request parameters'},
                      { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
@@ -39,9 +61,8 @@ module API::V1
 
       desc 'Destroy an user video', {
           success: { model: API::Entities::UserVideo },
-          failure: [ {code: 400, message: 'Missing/invalid request parameters'},
-                     { code: 401, message: 'Unauthorized' },
-                     {code: 403, message: 'Forbidden'} ],
+          failure: [ { code: 401, message: 'Unauthorized' },
+                     { code: 403, message: 'Forbidden'} ],
           headers: {
               'Device-Id' => {
                   description: 'Android device identifier',

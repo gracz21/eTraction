@@ -12,7 +12,7 @@ module API::V1
 
       desc 'Create new message', {
           success: { model: API::Entities::Message },
-          failure: [ {code: 400, message: 'Missing/invalid request parameters'},
+          failure: [ { code: 400, message: 'Missing/invalid request parameters'},
                      { code: 401, message: 'Unauthorized' } ],
           headers: {
               'Device-Id' => {
