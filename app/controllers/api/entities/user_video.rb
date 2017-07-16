@@ -15,7 +15,7 @@ module API::Entities
     end
 
     def video
-      object.video.url
+      object.video.url || object.video.metadata['url']
     end
   end
 end
